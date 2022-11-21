@@ -1,0 +1,15 @@
+
+{
+	"MV_Testdaten"	: 
+	[
+		{
+			"Zulassungsland"   : "DE",
+  			"Kennzeichen" : "HH AB 123"
+  		},
+  		{
+  			"Zulassungsland"   : "PL",
+  			"Kennzeichen" : "SG 49125"
+  		}
+  	]		
+ }
+  
