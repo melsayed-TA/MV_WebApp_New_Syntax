@@ -23,3 +23,5 @@ debug.log
 /generateJdk.bat
 /generateJdk.sh
 *.log
+/.settings/
+/target/
