@@ -6,7 +6,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.shaft.driver.SHAFT;
-import com.shaft.tools.io.ReportManager;
 
 
 public class NavigationTest {
@@ -30,7 +29,7 @@ public class NavigationTest {
 	@Test(dataProvider = "WebshopTestdata")
 	public void loginToWebshop(String email, String pass) {			
 		driver.browser().navigateToURL(url);
-		driver.assertThat().element(searchStoreField).isVisible().withCustomReportMessage("Checking that after successful navigation the search store edit field is displayed").perform();
+		driver.assertThat().element(searchStoreField).isVisible().withCustomReportMessage("Checking that after successful navigation to the url, the search store edit field is displayed").perform();
 		driver.element().click(loginButton);
 		driver.element().type(emailField, email);
 		driver.element().type(passField, pass);
@@ -40,7 +39,7 @@ public class NavigationTest {
 	
 	
 	@BeforeTest
-	public void startDriverAndNavigateToURL() {
+	public void startDriver() {
 		 driver = new SHAFT.GUI.WebDriver();				
 	}
 	

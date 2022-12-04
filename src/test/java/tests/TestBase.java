@@ -1,15 +1,10 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import com.shaft.driver.DriverFactory;
 import com.shaft.driver.SHAFT;
-import com.shaft.gui.browser.BrowserActions;
-
-import io.cucumber.testng.AbstractTestNGCucumberTests;
 import utilities.Helper;
 import utilities.PropertiesFileDataReader;
 

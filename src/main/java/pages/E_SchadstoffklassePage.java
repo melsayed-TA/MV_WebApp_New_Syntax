@@ -1,11 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
 import com.shaft.driver.SHAFT;
-import com.shaft.gui.element.ElementActions;
-import com.shaft.tools.io.ReportManager;
 
 public class E_SchadstoffklassePage extends PageBase{
 
@@ -18,7 +14,7 @@ public class E_SchadstoffklassePage extends PageBase{
 	//Elements Locators
 	private By homeButton		= By.xpath("//div[@aria-label='Startseite öffnen']");
 	private By jaButton			= By.xpath("//mv-button[@id='btn-confirm']");
-	private By zurueckButton	= By.xpath("//mv-button[@id='btn-backward']");
+	//private By zurueckButton	= By.xpath("//mv-button[@id='btn-backward']");
 	private By pageTitle		= By.xpath("(//mv-pagetitle[@id='page_title'])[2]");
 	
 	//Getter!

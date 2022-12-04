@@ -1,7 +1,5 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-
 import com.shaft.driver.SHAFT;
 
 public class Z_SeiteDrei extends PageBase{

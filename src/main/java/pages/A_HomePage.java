@@ -1,10 +1,8 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
 import com.shaft.driver.SHAFT;
-import com.shaft.gui.element.ElementActions;
+
 
 public class A_HomePage extends PageBase{
 	
@@ -43,10 +41,9 @@ public class A_HomePage extends PageBase{
 		//boolean isStreckeEinbuchenAngezeigt = ElementActions.isElementDisplayed(driver, streckeEinbuchenButton);
 		//return isStreckeEinbuchenAngezeigt;
 		
-		boolean isStreckeEinbuchenAngezeigt = driver.getDriver().findElement(streckeEinbuchenButton).isDisplayed();		//NATIVE SELENIUM (Bec. is displayed method is missed in the new syntax)
+		boolean isStreckeEinbuchenAngezeigt = driver.getDriver().findElement(streckeEinbuchenButton).isDisplayed();		//NATIVE SELENIUM (Bec. is displayed method is missed in the new syntax). Note that driver.getDriver() returns the native selenium driver
 		return isStreckeEinbuchenAngezeigt;
 	}
-	
 	
 	
 	public A_HomePage waehleBuchungspracheAus(String sprache) {

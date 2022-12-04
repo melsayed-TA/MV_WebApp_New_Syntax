@@ -1,7 +1,5 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-
 import com.shaft.driver.SHAFT;
 
 //Note: All page classes will inherit from this PageBase class. 

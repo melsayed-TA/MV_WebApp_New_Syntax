@@ -1,8 +1,6 @@
 package tests;
 
 import org.testng.annotations.Test;
-
-import com.shaft.gui.element.ElementActions;
 import com.shaft.tools.io.ReportManager;
 
 import io.qameta.allure.Description;
@@ -47,7 +45,6 @@ public class MVBuchungRegnutzerKreditkarte extends TestBase {
 										.klickeWeiterUndNavigiereZurKennzeichenSeite()
 										.gebeKennzeichenFeldEin(kennzeichen)
 										.klickeWeiterUndNavigiereZurSchadstoffklasseSeite();
-		
 		
 		//2. Assertion
 		//String titleName = ElementActions.getText(driver, sskPage.getPageTitle());	//old syntax
