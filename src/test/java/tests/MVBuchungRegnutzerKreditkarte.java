@@ -2,7 +2,6 @@ package tests;
 
 import org.testng.annotations.Test;
 import com.shaft.tools.io.ReportManager;
-
 import io.qameta.allure.Description;
 import pages.A_HomePage;
 import pages.E_SchadstoffklassePage;
@@ -28,7 +27,7 @@ public class MVBuchungRegnutzerKreditkarte extends TestBase {
 		String zulassungsland		= excelTD.getCellDataByTestcaseId(excelPath_testData, sheetName_testData, "Regnutzer_Kreditkarte", "Zulassungsland");		//Read zulassungsland from testdata excel by key/testcaseId
 		String rolle 				= excelTD.getCellDataByTestcaseId(excelPath_testData, sheetName_testData, "Regnutzer_Kreditkarte", "Rolle");				//Read Rolle from testdata excel by key/testcaseId
 
-		//Get user using UmgebungName + Rolle (Using sheet name --> sheet name is the controller) // URL --> Get Name (SystemName/URL) using the excel method, using the UmgebungName + Type (ID/Key) (Sheet name is the controller.)
+		//Get user using Umgebung + Rolle (Using sheet name --> sheet name is the controller) // URL --> Get Name (SystemName/URL) using the excel method, using the UmgebungName + Type (ID/Key) (Sheet name is the controller.)
 		ExcelFileDataReader excelUsers	= new ExcelFileDataReader(excelPath_User);
 		String username				   	= excelUsers.getCellDataByKey(excelPath_User, sheetName_User, "Rolle", rolle, "Username");							//Read username from SystemsAndUsers excel!!
 		String password 				= excelUsers.getCellDataByKey(excelPath_User, sheetName_User, "Rolle", rolle, "Password");							//Read password from SystemsAndUsers excel!!
@@ -55,7 +54,7 @@ public class MVBuchungRegnutzerKreditkarte extends TestBase {
 		//Shaft assertion
 		driver.assertThat().element(sskPage.getPageTitle()).text().contains("Schadstoffklasse").withCustomReportMessage("Check Schadstoffklasse page title = 'Schadstoffklasse'").perform();
 
-			
+		//Extra step -> to check ReportManager in allure report	
 		if (titleName.contains("Schadstoffklasse") == true) {
 			ReportManager.log("Check Page Title = 'Schadstoffklasse' is successful");
 		} else {
