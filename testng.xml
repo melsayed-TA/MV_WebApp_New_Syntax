@@ -4,7 +4,8 @@
 	<test name="MV-Einbuchung" preserve-order="false">
 
 		<classes>
-			<class name="tests.MVBuchungAnnonym" />
+			<class name="tests.MVBuchungRegnutzerKreditkarte" />
+			<class name="tests.MVBuchungAnnonymUsingExcel" />
 		</classes>
 
 	</test> <!-- Test -->
