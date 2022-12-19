@@ -28,6 +28,13 @@ public class A_HomePage extends PageBase{
 	
 	
 	//Actions (Methods)
+	//Navigate to WebApp URL
+	public A_HomePage navigateToMVWebApp(String url) {
+		driver.browser().navigateToURL(url);
+		return this;
+	}
+	
+	
 	public String ermittleWillkommenNachricht() {
 		//String willkommenNachtichtIst = ElementActions.getText(driver, willkommenNachticht);	//Old syntax
 		//return willkommenNachtichtIst;

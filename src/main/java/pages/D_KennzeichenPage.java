@@ -28,7 +28,7 @@ public class D_KennzeichenPage extends PageBase{
 		driver.element().click(weiterButton);
 		
 		E_SchadstoffklassePage schadstoffklassePage = new E_SchadstoffklassePage(driver);
-		return schadstoffklassePage;
+		return schadstoffklassePage;	//returning an object of type E_SchadstoffklassePage
 	}
 	
 }
