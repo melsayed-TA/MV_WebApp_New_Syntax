@@ -29,8 +29,7 @@ public class MVBuchungAnnonymUsingJSON extends TestBase{
 		@Description("Given that the environment is ready to be tested, When I try to book a ride using the MV-WebApp, Then a booking number will be displayed.")
 		@Test(dataProvider = "MV_Testdaten", description = "Prüfen, ob Einbuchung in der MV-WebApp funktioniert und Auslesen der Buchungsnummer")
 		public void durchfuehrenMVEinbuchung(String buchungssprache, String zulassungsland, String kennzeichen) throws IOException {
-
-			
+		
 			//A_HomePage homeSeite = new A_HomePage(driver);
 			new A_HomePage(driver).navigateToMVWebApp(getUrl())
 								  .waehleBuchungspracheAus(buchungssprache)
