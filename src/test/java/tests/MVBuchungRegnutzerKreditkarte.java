@@ -13,6 +13,7 @@ public class MVBuchungRegnutzerKreditkarte extends TestBase {
 	@Description("Dieser Test prüft, ob eine MV-Buchung mit einem reg. Nutzer und einer KK durchgeführt werden kann. Die Testdaten werden aus einer Exceldatei ausgelesen.")
 	@Test(description = "Prüfen, ob Einbuchung mit Regnutzer in der MV-WebApp funktioniert und Auslesen der Buchungsnummer")
 	public void durchfuehrenMVEinbuchung_Regnutzer_KK() {	
+		
 		//Read Test Data from excel file
 		String rolle 					= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Rolle");					//Read Rolle from testdata excel by key/testcaseId
 		String buchungssprache			= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Buchungssprache");		//Read buchungssprache from testdata excel by key/testcaseId

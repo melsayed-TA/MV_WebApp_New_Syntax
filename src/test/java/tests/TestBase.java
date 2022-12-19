@@ -22,17 +22,16 @@ public class TestBase {
 	
 	private String excelPath_SystemsAndUsers			= System.getProperty("user.dir") + "\\src\\test\\resources\\testDataFiles\\SystemsAndUsers.xlsx";
 	private String sheetName_Systems					= "Systems_" + umgebung;													//Systems_EK1
-	private ExcelFileDataReader excelSystems			= new ExcelFileDataReader(excelPath_SystemsAndUsers, sheetName_Systems);	//Excel object for reading Systems
-	
-	private String url					   				= excelSystems.getCellDataByKey("Systemart", "MV" , "URL");					//Get URL from excel
+	private ExcelFileDataReader excelSystems;
+		
+	private String url;					   			
 	
 	private String sheetName_Users						= "MV_Users_" + umgebung; 
-	private ExcelFileDataReader excelUsers				= new ExcelFileDataReader(excelPath_SystemsAndUsers, sheetName_Users);		//Excel object for reading Users
-
+	private ExcelFileDataReader excelUsers;				
 	
 	private String excelPath_Testdaten 					= System.getProperty("user.dir") + "\\src\\test\\resources\\testDataFiles\\MV_TestData_Different_Tests.xlsx";
 	private String sheetName_Testdaten				 	= "MV_Testdaten"; 															//can also be read from properties file (optional)
-	private ExcelFileDataReader excelTestDaten			= new ExcelFileDataReader(excelPath_Testdaten, sheetName_Testdaten);		//Excel object for reading test data
+	private ExcelFileDataReader excelTestDaten;			
 	
 	//Return App's URL --> To be used in all tests!
 	public String getUrl(){
@@ -47,14 +46,17 @@ public class TestBase {
 		return excelUsers;
 	}
 	
-	//Start driver and navigate to SUT URL --> Navigation can be moved to the test cases
+	//Start driver and navigate to SUT URL --> Navigation has been moved to the test cases
 	@BeforeTest
 	public void startDriverAndNavigateToURL() {
 		//driver = DriverFactory.getDriver();			//old syntax
 		//BrowserActions.navigateToURL(driver, url);	
 				
-		 driver = new SHAFT.GUI.WebDriver();		//new syntax -> instaniating the shaft webdriver
-		// driver.browser().navigateToURL(url);		//Navigating to the url -> Commented as the navigation will take place in the test cases
+		 driver			= new SHAFT.GUI.WebDriver();													//new syntax -> instaniating the shaft webdriver (instantiation)
+		 excelSystems	= new ExcelFileDataReader(excelPath_SystemsAndUsers, sheetName_Systems);		//Excel object for reading Systems (instantiation)
+		 excelUsers		= new ExcelFileDataReader(excelPath_SystemsAndUsers, sheetName_Users);			//Excel object for reading Users (instantiation)
+		 excelTestDaten = new ExcelFileDataReader(excelPath_Testdaten, sheetName_Testdaten);			//Excel object for reading test data (instantiation)
+		 url			= excelSystems.getCellDataByKey("Systemart", "MV" , "URL");						//Get URL from excel 
 	}
 	
 	

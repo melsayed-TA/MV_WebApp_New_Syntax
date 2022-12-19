@@ -8,7 +8,6 @@ import pages.A_HomePage;
 public class MVBuchungAnonymKreditkarte extends TestBase{
 	String testcaseId 		 	= "Anonym_Kreditkarte";
 	//ExcelFileDataReader excel	= new ExcelFileDataReader(getExcelPathTestdaten()); --> Done in Testbase!
-
 	
 	@Description("Dieser Test prüft, ob eine MV-Buchung mit KK durchgeführt werden kann. ")
 	@Test()
