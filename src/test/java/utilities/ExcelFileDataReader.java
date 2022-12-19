@@ -263,8 +263,13 @@ public class ExcelFileDataReader {
 				testData = new TreeMap<String,String>(String.CASE_INSENSITIVE_ORDER);
 				for(int k=0; k < lastColNumber; k++) {
 					XSSFCell cell = row.getCell(k);
-					String colValue = cell.getStringCellValue().trim();
-					testData.put((String) list.get(k), colValue);					
+					String colValue = "";
+					
+					if (cell != null) {
+						colValue = cell.getStringCellValue().trim();
+					} 
+					
+					testData.put((String) list.get(k), colValue);											
 			}
 				testDataAllRows.add(testData);
 		}
