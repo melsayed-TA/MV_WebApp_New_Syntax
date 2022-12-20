@@ -29,7 +29,7 @@ public class MVBuchungAnnonymUsingExcel extends TestBase {
 	//Test Case
 	@Description("Given that the environment is ready to be tested, When I try to book a ride using the MV-WebApp, Then a booking number will be displayed.")
 	@Test(dataProvider = "MVTestData", description = "Prüfen, ob Einbuchung in der MV-WebApp funktioniert und Auslesen der Buchungsnummer")
-	public void durchfuehrenMVEinbuchung(String buchungssprache, String zulassungsland, String kennzeichen) {
+	public void durchfuehrenMVEinbuchung(String buchungssprache, String zulassungsland, String kennzeichen, String schadstoffklasse_title_soll) {
 					
 		ReportManager.log("**************MV-Einbuchung: " + counter + " wird durchgeführt**************");
 		
@@ -45,10 +45,11 @@ public class MVBuchungAnnonymUsingExcel extends TestBase {
 																.klickeWeiterUndNavigiereZurSchadstoffklasseSeite();
 																//.navigiereZurHomeSeite();	--> Navigation occurs in the test itself!
 		
-		// 2. Assertion
-		driver.assertThat().element(sskSeite.getPageTitle()).text().contains("Schadstoffklasse").withCustomReportMessage("Check Schadstoffklasse page title = 'Schadstoffklasse'").perform();
+		// 2. Assertions
+		driver.assertThat().element(sskSeite.getEuroVierButton()).exists().withCustomReportMessage("Check if Euro 4 Button Exists").perform();
+		driver.assertThat().element(sskSeite.getPageTitle()).text().contains(schadstoffklasse_title_soll).withCustomReportMessage("Check if Schadstoffklasse page title is correct").perform();
 		
-		ReportManager.log("MV-Einbuchung: " + counter + " erfolgreich durchgeführt");
+		ReportManager.log("**************MV-Einbuchung: " + counter + " erfolgreich durchgeführt**************");
 		counter = counter + 1;
 	}
 }

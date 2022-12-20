@@ -16,10 +16,15 @@ public class E_SchadstoffklassePage extends PageBase{
 	private By jaButton			= By.xpath("//mv-button[@id='btn-confirm']");
 	//private By zurueckButton	= By.xpath("//mv-button[@id='btn-backward']");
 	private By pageTitle		= By.xpath("(//mv-pagetitle[@id='page_title'])[2]");
+	private By euroVierButton	= By.id("icon-tile-S4");
 	
 	//Getter!
 	public By getPageTitle() {
 		return pageTitle;
+	}
+	
+	public By getEuroVierButton() {
+		return euroVierButton;
 	}
 
 	//Actions
@@ -42,6 +47,8 @@ public class E_SchadstoffklassePage extends PageBase{
 			
 		}
 	}*/
+	
+	
 	
 
 }

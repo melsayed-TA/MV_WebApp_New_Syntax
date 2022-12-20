@@ -41,6 +41,7 @@ public class MVBuchungRegnutzerKreditkarte extends TestBase {
 		//Assert.assertEquals(titleNameActual, titleNameExpected, "Title of Schadstoffklasse page is not as expected!");	//TestNG Framework Assertion
 		
 		//Shaft assertion
+		driver.assertThat().element(sskPage.getEuroVierButton()).exists().withCustomReportMessage("Check if Euro 4 Button Exists").perform();
 		driver.assertThat().element(sskPage.getPageTitle()).text().contains("Schadstoffklasse").withCustomReportMessage("Check Schadstoffklasse page title = 'Schadstoffklasse'").perform();
 		
 		//Normal check, extra step -> to check ReportManager in allure report

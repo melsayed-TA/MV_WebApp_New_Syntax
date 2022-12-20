@@ -3,6 +3,9 @@ package tests;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import com.shaft.driver.SHAFT;
 
@@ -47,7 +50,10 @@ public class TestBase {
 	}
 	
 	//Start driver and navigate to SUT URL --> Navigation has been moved to the test cases
-	@BeforeTest
+	//@BeforeTest //--> when running more than one test class, it does not run
+	//@BeforeSuite //--> when running more than one test class, it does not run
+	//@BeforeMethod
+	@BeforeClass
 	public void startDriverAndNavigateToURL() {
 		//driver = DriverFactory.getDriver();			//old syntax
 		//BrowserActions.navigateToURL(driver, url);	

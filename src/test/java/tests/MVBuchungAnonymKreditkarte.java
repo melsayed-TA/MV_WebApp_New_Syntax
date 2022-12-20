@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import com.shaft.tools.io.ReportManager;
 import io.qameta.allure.Description;
 import pages.A_HomePage;
+import pages.E_SchadstoffklassePage;
 
 public class MVBuchungAnonymKreditkarte extends TestBase{
 	String testcaseId 		 	= "Anonym_Kreditkarte";
@@ -22,7 +23,7 @@ public class MVBuchungAnonymKreditkarte extends TestBase{
 		
 		//Fluent design!
 		//A_HomePage homeSeite = new A_HomePage(driver);
-		new A_HomePage(driver).navigateToMVWebApp(getUrl())
+		E_SchadstoffklassePage sskPage	= new A_HomePage(driver).navigateToMVWebApp(getUrl())
 							  .waehleBuchungspracheAus(buchungssprache)
 							  .klickeStarteEinbuchungUndNavigiereZurFahrbeginnSeite()
 							  .klickeWeiterInDerFahrtbeginnSeite().getZulassungsPage()
@@ -30,5 +31,8 @@ public class MVBuchungAnonymKreditkarte extends TestBase{
 							  .klickeWeiterUndNavigiereZurKennzeichenSeite()
 							  .gebeKennzeichenFeldEin(kennzeichen)
 							  .klickeWeiterUndNavigiereZurSchadstoffklasseSeite();
+		
+		driver.assertThat().element(sskPage.getEuroVierButton()).exists().withCustomReportMessage("Check if Euro 4 Button Exists").perform();
+
 	}
 }
