@@ -50,8 +50,8 @@ public class TestBase {
 	}
 	
 	//Start driver and navigate to SUT URL --> Navigation has been moved to the test cases
-	//@BeforeTest //--> when running more than one test class, it does not run
-	//@BeforeSuite //--> when running more than one test class, it does not run
+	//@BeforeTest //--> when running more than one test class (from testng.xml), it does not run
+	//@BeforeSuite //--> when running more than one test class (from testng.xml), it does not run
 	//@BeforeMethod
 	@BeforeClass
 	public void startDriverAndNavigateToURL() {

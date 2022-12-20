@@ -4,7 +4,6 @@
 	<test name="MV-Einbuchung" preserve-order="false">
 
 		<classes>
-			<class name="tests.MVBuchungAnonymKreditkarte" />
 			<class name="tests.MVBuchungRegnutzerKreditkarte" />
 		</classes>
 
