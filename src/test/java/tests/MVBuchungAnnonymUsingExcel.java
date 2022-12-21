@@ -45,9 +45,9 @@ public class MVBuchungAnnonymUsingExcel extends TestBase {
 																.klickeWeiterUndNavigiereZurSchadstoffklasseSeite();
 																//.navigiereZurHomeSeite();	--> Navigation occurs in the test itself!
 		
-		// 2. Assertions
-		driver.assertThat().element(sskSeite.getEuroVierButton()).exists().withCustomReportMessage("Check if Euro 4 Button Exists").perform();
-		driver.assertThat().element(sskSeite.getPageTitle()).text().contains(schadstoffklasse_title_soll).withCustomReportMessage("Check if Schadstoffklasse page title is correct").perform();
+		// 2. Assertions (Note: Assertion can also be a method inside the E_SchadstoffklassePage class and get called directly in the first part ^, with this you would not have this 2nd part)
+		driver.assertThat().element(sskSeite.getEuroVierButton()).exists().withCustomReportMessage("Check that Euro 4 Button Exists").perform();
+		driver.assertThat().element(sskSeite.getPageTitle()).text().contains(schadstoffklasse_title_soll).withCustomReportMessage("Check that Schadstoffklasse page title is correct").perform();
 		
 		ReportManager.log("**************MV-Einbuchung: " + counter + " erfolgreich durchgeführt**************");
 		counter = counter + 1;
