@@ -7,13 +7,13 @@ import pages.A_HomePage;
 import pages.E_SchadstoffklassePage;
 
 public class MVBuchungAnonymKreditkarte extends TestBase{
-	String testcaseId 		 	= "Anonym_Kreditkarte";
+	String testcaseId = "Anonym_Kreditkarte";
 	//ExcelFileDataReader excel	= new ExcelFileDataReader(getExcelPathTestdaten()); --> Done in Testbase!
 	
 	@Description("Dieser Test prüft, ob eine MV-Buchung mit KK durchgeführt werden kann. ")
 	@Test()
 	public void durchfuehrenMVEinbuchung() {	
-		//Read test data from excel
+		//Read test data from excel by testcase-ID (Key!)
 		String buchungssprache 		= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Buchungssprache");			//Read buchungssprache from excel by key/testcaseId 
 		String kennzeichen			= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Kennzeichen");				//Read kennzeichen from excel by key/testcaseId 
 		String zulassungsland		= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Zulassungsland");			//Read zulassungsland from excel by key/testcaseId
@@ -31,8 +31,9 @@ public class MVBuchungAnonymKreditkarte extends TestBase{
 							  .klickeWeiterUndNavigiereZurKennzeichenSeite()
 							  .gebeKennzeichenFeldEin(kennzeichen)
 							  .klickeWeiterUndNavigiereZurSchadstoffklasseSeite();
+							  //.assertVierEuroButtonExistiert();
 		
-		driver.assertThat().element(sskPage.getEuroVierButton()).exists().withCustomReportMessage("Check if Euro 4 Button Exists").perform();
+		driver.assertThat().element(sskPage.getEuroVierButton()).exists().withCustomReportMessage("Check if Euro 4 Button Exists").perform(); //Assertion
 
 	}
 }

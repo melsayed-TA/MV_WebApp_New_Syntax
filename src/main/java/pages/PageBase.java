@@ -8,7 +8,6 @@ import com.shaft.driver.SHAFT;
 
 public class PageBase {
 
-	//protected WebDriver driver;
 	protected SHAFT.GUI.WebDriver driver;
 
 	//Constructor 

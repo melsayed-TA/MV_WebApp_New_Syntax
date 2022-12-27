@@ -33,7 +33,7 @@ public class MVBuchungAnnonymUsingExcel extends TestBase {
 					
 		ReportManager.log("**************MV-Einbuchung: " + counter + " wird durchgeführt**************");
 		
-		//1. Navigation
+		// 1. Navigation
 		//A_HomePage homeSeite = new A_HomePage(driver);
 		E_SchadstoffklassePage sskSeite = new A_HomePage(driver).navigateToMVWebApp(getUrl())
 																.waehleBuchungspracheAus(buchungssprache)
@@ -42,12 +42,12 @@ public class MVBuchungAnnonymUsingExcel extends TestBase {
 																.waehleZulassungslandAus(zulassungsland)
 																.klickeWeiterUndNavigiereZurKennzeichenSeite()
 																.gebeKennzeichenFeldEin(kennzeichen)
-																.klickeWeiterUndNavigiereZurSchadstoffklasseSeite();
-																//.navigiereZurHomeSeite();	--> Navigation occurs in the test itself!
+																.klickeWeiterUndNavigiereZurSchadstoffklasseSeite()
+																.assertVierEuroButtonExistiert();
 		
 		// 2. Assertions (Note: Assertion can also be a method inside the E_SchadstoffklassePage class and get called directly in the first part ^, with this you would not have this 2nd part)
-		driver.assertThat().element(sskSeite.getEuroVierButton()).exists().withCustomReportMessage("Check that Euro 4 Button Exists").perform();
-		driver.assertThat().element(sskSeite.getPageTitle()).text().contains(schadstoffklasse_title_soll).withCustomReportMessage("Check that Schadstoffklasse page title is correct").perform();
+		//driver.assertThat().element(sskSeite.getEuroVierButton()).exists().withCustomReportMessage("Check that Euro 4 Button Exists").perform();  //Done in part one --> Better Approach
+		driver.assertThat().element(sskSeite.getPageTitle()).text().contains(schadstoffklasse_title_soll).withCustomReportMessage("Check that Schadstoffklasse page title is correct").perform(); //Another Approach (Note that the expected value is read from an excel file!)
 		
 		ReportManager.log("**************MV-Einbuchung: " + counter + " erfolgreich durchgeführt**************");
 		counter = counter + 1;

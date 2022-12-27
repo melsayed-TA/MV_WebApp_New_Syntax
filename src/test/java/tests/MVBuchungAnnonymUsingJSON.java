@@ -38,7 +38,7 @@ public class MVBuchungAnnonymUsingJSON extends TestBase{
 								  .waehleZulassungslandAus(zulassungsland)
 								  .klickeWeiterUndNavigiereZurKennzeichenSeite()
 								  .gebeKennzeichenFeldEin(kennzeichen)
-								  .klickeWeiterUndNavigiereZurSchadstoffklasseSeite();
-								  //.navigiereZurHomeSeite();		
+								  .klickeWeiterUndNavigiereZurSchadstoffklasseSeite()
+								  .assertVierEuroButtonExistiert();
 		}	
 }

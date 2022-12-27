@@ -39,8 +39,8 @@ public class MVBuchungAnnonymUsingPropertiesFile extends TestBase {
 								  .waehleZulassungslandAus(arrZulassungsland[i])
 								  .klickeWeiterUndNavigiereZurKennzeichenSeite()
 								  .gebeKennzeichenFeldEin(arrkennzeichen[i])
-								  .klickeWeiterUndNavigiereZurSchadstoffklasseSeite();
-								  //.navigiereZurHomeSeite();
+								  .klickeWeiterUndNavigiereZurSchadstoffklasseSeite()
+								  .assertVierEuroButtonExistiert();
 		}
 		
 	}

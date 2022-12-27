@@ -19,7 +19,7 @@ public class MVBuchungAnnonym extends TestBase{
 	
 	@Test(dataProvider = "MVTestData")
 	public void durchfuehrenMVEinbuchung(String buchungssprache, String zulassungsland, String kennzeichen) {	
-			//Fluent design!
+		//Fluent design!
 		//A_HomePage homeSeite = new A_HomePage(driver);
 		new A_HomePage(driver).navigateToMVWebApp(getUrl())
 							  .waehleBuchungspracheAus(buchungssprache)
@@ -28,7 +28,7 @@ public class MVBuchungAnnonym extends TestBase{
 							  .waehleZulassungslandAus(zulassungsland)
 							  .klickeWeiterUndNavigiereZurKennzeichenSeite()
 							  .gebeKennzeichenFeldEin(kennzeichen)
-							  .klickeWeiterUndNavigiereZurSchadstoffklasseSeite();
-							  //.navigiereZurHomeSeite();
+							  .klickeWeiterUndNavigiereZurSchadstoffklasseSeite()
+							  .assertVierEuroButtonExistiert();
 	} 
 }

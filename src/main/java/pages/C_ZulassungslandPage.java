@@ -19,13 +19,11 @@ public class C_ZulassungslandPage extends PageBase{
 	public C_ZulassungslandPage waehleZulassungslandAus(String zulassungsland) {
 		
 		if (zulassungsland.toUpperCase().contains("DE")) {
-			//ElementActions.click(driver, deutschlandButton);
 			driver.element().click(deutschlandButton);
 		}
 		
 		else if (zulassungsland.toUpperCase().contains("PL")) 
 		{
-			//ElementActions.click(driver, polenButton);
 			driver.element().click(polenButton);
 		}
 		
@@ -33,7 +31,6 @@ public class C_ZulassungslandPage extends PageBase{
 	}
 	
 	public D_KennzeichenPage klickeWeiterUndNavigiereZurKennzeichenSeite() {
-		//ElementActions.click(driver, weiterButton);
 		driver.element().click(weiterButton);
 		
 		D_KennzeichenPage kennzeichenPage = new D_KennzeichenPage(driver);
