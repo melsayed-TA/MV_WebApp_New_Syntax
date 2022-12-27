@@ -9,6 +9,7 @@ public class Z_SeiteDrei extends PageBase{
 		super(driver);
 	}
 	
+	//Locators
 	private B_Regnutzer_Fahrzeuge fahrzeugePage = new B_Regnutzer_Fahrzeuge(driver);
 	private C_ZulassungslandPage zulassungsPage = new C_ZulassungslandPage(driver);
 	

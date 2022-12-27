@@ -16,9 +16,8 @@ public class B_Regnutzer_Fahrzeuge extends PageBase {
 	private By weiterButton						= By.id("btn-forward");
 	
 	
-	//Actions (methods)
+	//Actions
 	public C_ZulassungslandPage klickeAnderesFahrzeugVerwendenUndNavigiereZurZulassungslandPage() {
-		//String currentClassName = ElementActions.getAttribute(driver, anderesFahrzeugVerwendenButton, "class");
 		String currentClassName = driver.element().getAttribute(anderesFahrzeugVerwendenButton, "class");
 		
 		if (currentClassName.contains("selection-button-component selection-button-component__other active")) {
@@ -26,12 +25,9 @@ public class B_Regnutzer_Fahrzeuge extends PageBase {
 		} 
 		else //click if not clicked/activated (click only if not clicked)
 		{
-			//ElementActions.click(driver, anderesFahrzeugVerwendenButton);
 			driver.element().click(anderesFahrzeugVerwendenButton);
 		}
-		
 
-		//ElementActions.click(driver, weiterButton);	//Click on weiter
 		driver.element().click(weiterButton);
 		
 		C_ZulassungslandPage zulassungslandPage = new C_ZulassungslandPage(driver);

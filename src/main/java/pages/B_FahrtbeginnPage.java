@@ -14,10 +14,8 @@ public class B_FahrtbeginnPage extends PageBase{
 	//Elements Locators
 	private By weiterButton = By.id("btn-forward");
 	
-	
 	//Actions
 	public /*C_ZulassungslandPage*/ Z_SeiteDrei klickeWeiterInDerFahrtbeginnSeite() {
-		//ElementActions.click(driver, weiterButton);
 		driver.element().click(weiterButton);
 		
 		Z_SeiteDrei seiteDrei = new Z_SeiteDrei(driver);

@@ -7,27 +7,22 @@ import utilities.PropertiesFileDataReader;
 public class MVBuchungAnnonymUsingPropertiesFile extends TestBase {
 	
 	//Read the test data from the properties file
-	private String zulassungsland	= PropertiesFileDataReader.userData.getProperty("zulassungsland");
-	private String kennzeichen 		= PropertiesFileDataReader.userData.getProperty("kennzeichen");
-		
-	/*@DataProvider(name="MVTestData")
-	public static Object[][] testData()
-	{
-		Object[][] mvTestData = new Object[][] { {"DE", "HH AB 123"}, {"PL", "SG 49125"} };
-		return mvTestData;
-	}*/
-
+	private String zulassungsland		= PropertiesFileDataReader.userData.getProperty("zulassungsland");
+	private String kennzeichen 			= PropertiesFileDataReader.userData.getProperty("kennzeichen");
+	private String buchungssprache 		= PropertiesFileDataReader.userData.getProperty("buchungssprache");
 	
 	@Test()
 	public void durchfuehrenMVEinbuchung() {
 		
 		String [] arrZulassungsland = zulassungsland.split(",");
 		String [] arrkennzeichen 	= kennzeichen.split(",");
+		String [] arrBuchungssprache = buchungssprache.split(",");
 		
 		int arrLength = arrZulassungsland.length;
 		for (int i = 0; i < arrLength; i++) 		//looping through all test data
 		{
 			System.out.println("Iteration number/Test number --> " + Integer.toString(i+1));
+			System.out.println("Buchungssprache to be used --> " + arrBuchungssprache[i]);
 			System.out.println("Zulassungsland to be used --> " + arrZulassungsland[i]);
 			System.out.println("Kennzeichen to be used --> " + arrkennzeichen[i]);
 		
@@ -36,15 +31,16 @@ public class MVBuchungAnnonymUsingPropertiesFile extends TestBase {
 			System.out.println("Data from data provider, kennzeichen: " + kennzeichen);
 		
 			//Test Case
-			A_HomePage homeSeite = new A_HomePage(driver);
-			homeSeite.waehleBuchungspracheAus("Deutsch")
-					 .klickeStarteEinbuchungUndNavigiereZurFahrbeginnSeite()
-					 .klickeWeiterInDerFahrtbeginnSeite().getZulassungsPage()
-					 .waehleZulassungslandAus(arrZulassungsland[i])
-					 .klickeWeiterUndNavigiereZurKennzeichenSeite()
-					 .gebeKennzeichenFeldEin(arrkennzeichen[i])
-					 .klickeWeiterUndNavigiereZurSchadstoffklasseSeite()
-					 .navigiereZurHomeSeite();
+			//A_HomePage homeSeite = new A_HomePage(driver);
+			new A_HomePage(driver).navigateToMVWebApp(getUrl())
+								  .waehleBuchungspracheAus(arrBuchungssprache[i])
+								  .klickeStarteEinbuchungUndNavigiereZurFahrbeginnSeite()
+								  .klickeWeiterInDerFahrtbeginnSeite().getZulassungsPage()
+								  .waehleZulassungslandAus(arrZulassungsland[i])
+								  .klickeWeiterUndNavigiereZurKennzeichenSeite()
+								  .gebeKennzeichenFeldEin(arrkennzeichen[i])
+								  .klickeWeiterUndNavigiereZurSchadstoffklasseSeite()
+								  .assertVierEuroButtonExistiert();
 		}
 		
 	}

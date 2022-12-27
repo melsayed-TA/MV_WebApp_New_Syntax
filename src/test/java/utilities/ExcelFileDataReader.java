@@ -27,23 +27,25 @@ import com.shaft.tools.io.ReportManager;
 
 
 public class ExcelFileDataReader {
-	public FileInputStream fi;
-	public FileOutputStream fo;
-	public XSSFWorkbook workbook;
-	public XSSFSheet sheet;
-	public XSSFRow row;
-	public XSSFCell cell;
-	public CellStyle style;   
-	String path;
+	private FileInputStream fi;
+	private FileOutputStream fo;
+	private XSSFWorkbook workbook;
+	private XSSFSheet sheet;
+	private XSSFRow row;
+	private XSSFCell cell;
+	private CellStyle style;   
+	private String path;
+	private String sheetName;
 	
 	//Constructor
-	public ExcelFileDataReader(String path)
+	public ExcelFileDataReader(String path, String sheetName)
 	{
 		this.path = path;
+		this.sheetName = sheetName;
 	}
 		
 	//Actions
-	public int getRowCount(String sheetName) throws IOException 
+	public int getRowCount() throws IOException 
 	{
 		fi=new FileInputStream(path);
 		workbook=new XSSFWorkbook(fi);
@@ -55,7 +57,7 @@ public class ExcelFileDataReader {
 	}
 	
 
-	public int getCellCount(String sheetName,int rownum) throws IOException		//ColCount
+	public int getCellCount(int rownum) throws IOException		//ColCount
 	{
 		fi=new FileInputStream(path);
 		workbook=new XSSFWorkbook(fi);
@@ -68,7 +70,7 @@ public class ExcelFileDataReader {
 	}
 	
 	
-	public String getCellData(String sheetName,int rownum,int colnum) throws IOException
+	public String getCellData(int rownum,int colnum) throws IOException
 	{
 		fi=new FileInputStream(path);
 		workbook=new XSSFWorkbook(fi);
@@ -90,7 +92,7 @@ public class ExcelFileDataReader {
 		return data;
 	}
 	
-	public void setCellData(String sheetName,int rownum,int colnum,String data) throws IOException
+	public void setCellData(int rownum, int colnum, String data) throws IOException
 	{
 		File xlfile=new File(path);
 		if(!xlfile.exists())    // If file not exists then create new file
@@ -122,7 +124,7 @@ public class ExcelFileDataReader {
 	}
 	
 	
-	public void fillGreenColor(String sheetName,int rownum,int colnum) throws IOException
+	public void fillGreenColor(int rownum, int colnum) throws IOException
 	{
 		fi=new FileInputStream(path);
 		workbook=new XSSFWorkbook(fi);
@@ -144,7 +146,7 @@ public class ExcelFileDataReader {
 	}
 	
 	
-	public void fillRedColor(String sheetName,int rownum,int colnum) throws IOException
+	public void fillRedColor(int rownum, int colnum) throws IOException
 	{
 		fi=new FileInputStream(path);
 		workbook=new XSSFWorkbook(fi);
@@ -165,16 +167,16 @@ public class ExcelFileDataReader {
 	}
 
 	//Get all ExcelFile Data (as a 2D array - Used in TDD "multiple data in different rows for same test") - (Stores Excel Data in a 2D array and returns this 2D array --> to be used in the data provider TestNG annotation, since the TestNG annotation only accepts 2D Arrays)
-	public String[][] getExcelData(String excelFilePath, String excelSheetName) throws IOException {
+	public String[][] getExcelData() throws IOException {
 		
-		int rowsCount = getRowCount(excelSheetName);
-		int colCount  = getCellCount(excelSheetName, 1);
+		int rowsCount = getRowCount();
+		int colCount  = getCellCount(1);
 		
 		String [][] excelData = new String[rowsCount][colCount];
 		
 		for (int i = 1; i <= rowsCount; i++) {
 			for (int j = 0; j < colCount; j++) {
-				excelData[i-1][j] = getCellData(excelSheetName, i, j);
+				excelData[i-1][j] = getCellData(i, j);
 			}
 		}
 		
@@ -182,7 +184,7 @@ public class ExcelFileDataReader {
 	}
 	
 	//Get Excel Data as Map (i.o. Dictionary) by Test case id (Test case id is the key)
-	public /*static*/ Map<String,String> getTestDataAsMapByTestcaseId(String testDataFilePath, String sheetName, String testCaseId) throws Exception
+	public /*static*/ Map<String,String> getTestDataAsMapByTestcaseId(String testCaseId) throws Exception
 	{
 		Map<String,String> TestDataInMap=new TreeMap<String,String>();		
 		String query=null;
@@ -192,7 +194,7 @@ public class ExcelFileDataReader {
 		Recordset recordset=null;
 		try
 		{
-			conn=fillo.getConnection(testDataFilePath);
+			conn=fillo.getConnection(path);
 			recordset=conn.executeQuery(query);
 			//recordset=((com.codoid.products.fillo.Connection) conn).executeQuery(query);
 			while(recordset.next())
@@ -214,12 +216,12 @@ public class ExcelFileDataReader {
 	}
 	
 	//Set data in Excel
-	public /*static*/ void UpdateTestResultsToExcel(String testDataFilePath,String sheetName,String tcStatus,String testCaseId)
+	public /*static*/ void UpdateTestResultsToExcel(String tcStatus,String testCaseId)
 	{
 		Connection conn=null;
 		Fillo fillo =new Fillo();
 		try{
-			conn=fillo.getConnection(testDataFilePath);
+			conn=fillo.getConnection(path);
 			String query=String.format("UPDATE %s SET TestCaseStatus='%s' where TestCaseID='%s'", sheetName,tcStatus,testCaseId);
 			conn.executeUpdate(query);
 		} catch(FilloException e){
@@ -229,19 +231,20 @@ public class ExcelFileDataReader {
 	
 	
 	//Get Excel data as list of hash maps
-	public List<Map<String,String>> getTestDataAsListOfHashMaps(String excelFilePath, String excelSheetName) {
+	public List<Map<String,String>> getTestDataAsListOfHashMaps() {
 		List<Map<String,String>> testDataAllRows = null;		//List of hash maps
 		Map<String,String> testData = null;		//only one hash map (one row)
 		
 		try {
-			FileInputStream fileInputStream = new FileInputStream(excelFilePath);
+			//FileInputStream fileInputStream = new FileInputStream(excelFilePath);
+			FileInputStream fileInputStream = new FileInputStream(path);
 			XSSFWorkbook workbook = null;
 			try {
 				workbook = new XSSFWorkbook(fileInputStream);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			XSSFSheet sheet = workbook.getSheet(excelSheetName);
+			XSSFSheet sheet = workbook.getSheet(sheetName);
 			int lastRowNumber = sheet.getLastRowNum();
 			int lastColNumber = sheet.getRow(0).getLastCellNum();
 			
@@ -260,8 +263,13 @@ public class ExcelFileDataReader {
 				testData = new TreeMap<String,String>(String.CASE_INSENSITIVE_ORDER);
 				for(int k=0; k < lastColNumber; k++) {
 					XSSFCell cell = row.getCell(k);
-					String colValue = cell.getStringCellValue().trim();
-					testData.put((String) list.get(k), colValue);					
+					String colValue = "";
+					
+					if (cell != null) {
+						colValue = cell.getStringCellValue().trim();
+					} 
+					
+					testData.put((String) list.get(k), colValue);											
 			}
 				testDataAllRows.add(testData);
 		}
@@ -277,8 +285,10 @@ public class ExcelFileDataReader {
 	
 	
 	//Get cell data by key (Key here is the testcaseId in excel file)
-	public String getCellDataByTestcaseId(String excelFilePath, String excelSheetName, String testcaseID, String columnNameToGetItsValue) {
-		List<Map<String,String>> testDataAllRows = getTestDataAsListOfHashMaps(excelFilePath, excelSheetName);   //get list of all hash maps
+	public String getCellDataByTestcaseId(String testcaseID, String columnNameToGetItsValue) {
+		//List<Map<String,String>> testDataAllRows = getTestDataAsListOfHashMaps(excelFilePath, excelSheetName);   //get list of all hash maps
+		List<Map<String,String>> testDataAllRows = getTestDataAsListOfHashMaps();   //get list of all hash maps
+		
 		String colValue = null;
 		
 		for (Map<String, String> myMap : testDataAllRows) {		//for each hashmap in all hash maps
@@ -287,7 +297,7 @@ public class ExcelFileDataReader {
 			if (currentTestcaseId == testcaseID || currentTestcaseId.contains(testcaseID.toString().trim()) == true ) {	// True --> the required map is found!
 				//ReportManager.log("***TESTDATA*** --> TestCaseId (Key): '" + testcaseID + "' was found successfully in the excel test data file");
 				colValue = myMap.get(columnNameToGetItsValue);		
-				ReportManager.log("***TESTDATA*** --> The value of the coloumn '" + columnNameToGetItsValue + "' corresponding to the TestCaseId '" + testcaseID + "' of the excel file: '" + excelFilePath +"' is --> '" + colValue + "'");
+				ReportManager.log("***TESTDATA*** --> The value of the coloumn '" + columnNameToGetItsValue + "' corresponding to the TestCaseId '" + testcaseID + "' of the excel file: '" + path +"' is --> '" + colValue + "'");
 				break;
 			}		
 		}
@@ -301,8 +311,10 @@ public class ExcelFileDataReader {
 	
 	
 	//Get cell data by key (Key name is defined by the user of the method)
-	public String getCellDataByKey(String excelFilePath, String excelSheetName, String keyColumnName , String keyColumnValue, String columnNameToGetItsValue) {
-		List<Map<String,String>> testDataAllRows = getTestDataAsListOfHashMaps(excelFilePath, excelSheetName);   //get list of all hash maps
+	public String getCellDataByKey(String keyColumnName , String keyColumnValue, String columnNameToGetItsValue) {
+		//List<Map<String,String>> testDataAllRows = getTestDataAsListOfHashMaps(excelFilePath, excelSheetName);   //get list of all hash maps
+		List<Map<String,String>> testDataAllRows = getTestDataAsListOfHashMaps();   //get list of all hash maps
+		
 		String colValue = null;
 		
 		for (Map<String, String> myMap : testDataAllRows) {		//for each hashmap in all hash maps
@@ -311,7 +323,7 @@ public class ExcelFileDataReader {
 			if (currentKeyColumnValue == keyColumnValue || currentKeyColumnValue.contains(keyColumnValue.toString().trim()) == true ) {	// True --> the required map is found!
 				//ReportManager.log("***TESTDATA*** --> TestCaseId (Key): '" + testcaseID + "' was found successfully in the excel test data file");
 				colValue = myMap.get(columnNameToGetItsValue);		
-				ReportManager.log("***TESTDATA*** --> The value of the coloumn '" + columnNameToGetItsValue + "' corresponding to the key column '" + keyColumnName  + "' and key value '" + keyColumnValue + "' of the excel file: '" + excelFilePath +"' is --> '" + colValue + "'");
+				ReportManager.log("***TESTDATA*** --> The value of the coloumn '" + columnNameToGetItsValue + "' corresponding to the key column '" + keyColumnName  + "' and key value '" + keyColumnValue + "' of the excel file: '" + path +"' is --> '" + colValue + "'");
 				break;
 			}		
 		}

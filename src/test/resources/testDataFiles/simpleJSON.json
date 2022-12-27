@@ -1,15 +1,16 @@
-
 {
 	"MV_Testdaten"	: 
 	[
 		{
+			"Buchungssprache"  : "Deutsch",
 			"Zulassungsland"   : "DE",
-  			"Kennzeichen" : "HH AB 123"
+  			"Kennzeichen" 	   : "HH AB 123"
   		},
   		{
-  			"Zulassungsland"   : "PL",
-  			"Kennzeichen" : "SG 49125"
+  			"Buchungssprache"   : "Polski",
+  			"Zulassungsland"    : "PL",
+  			"Kennzeichen"       : "SG 49125"
   		}
   	]		
  }
-  
+ 

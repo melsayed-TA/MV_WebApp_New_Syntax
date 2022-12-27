@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>selenium</groupId>
@@ -8,8 +10,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<!-- Make sure to star the project on github to get notified and update to the latest version: https://github.com/MohabMohie/SHAFT_ENGINE/releases -->
-		<shaft_engine.version>6.4.20221117</shaft_engine.version>
+		<!-- Make sure you point to the latest release version: https://github.com/ShaftHQ/SHAFT_ENGINE/releases -->
+		<shaft_engine.version>6.4.20221225</shaft_engine.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -80,10 +82,9 @@
 						</property>
 					</properties>
 
-					<suiteXmlFiles>											<!-- Added by melsayed, to run a full testsuite from the testng.xml file-->
+					<suiteXmlFiles>											
 						<suiteXmlFile>${suiteXMLFile}</suiteXmlFile>		<!-- Added by melsayed, to run a full testsuite from the testng.xml file-->		
-					</suiteXmlFiles>										<!-- Added by melsayed, to run a full testsuite from the testng.xml file-->
-
+					</suiteXmlFiles>										
 
 				</configuration>
 			</plugin>
