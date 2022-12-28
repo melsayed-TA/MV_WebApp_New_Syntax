@@ -34,6 +34,5 @@ public class MVBuchungAnonymKreditkarte extends TestBase{
 							  //.assertVierEuroButtonExistiert();
 		
 		driver.assertThat().element(sskPage.getEuroVierButton()).exists().withCustomReportMessage("Check if Euro 4 Button Exists").perform(); //Assertion
-
 	}
 }
