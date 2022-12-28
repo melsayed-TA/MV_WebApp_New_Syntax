@@ -24,7 +24,7 @@ jobs:
           node-version: '16'
       - name: Set up Native Selenium Grid     # melsayed: Step 3 -> Set up a selenium grid over a docker compose (in case of running tests on Linux)
         if: runner.os == 'Linux'
-        run: docker-compose -f GUI_Web/src/main/resources/docker-compose/selenium4.yml up --scale chrome=4 --scale edge=0 --scale firefox=0 -d
+        run: docker-compose -f MV_WebApp_New_Syntax/src/test/resources/docker-compose/selenium4.yml up --scale chrome=4 --scale edge=0 --scale firefox=0 -d
       - name: Set up JDK 17                   # melsayed: Step 4 -> Set up the JDK
         uses: actions/setup-java@v3
         with:
@@ -37,7 +37,7 @@ jobs:
         if: runner.os != 'Windows'
         continue-on-error: true
         run: |
-          cd GUI_Web/
+          cd MV_WebApp_New_Syntax/
           if [ "$RUNNER_OS" == "Linux" ]; then
                mvn test -DexecutionAddress="localhost:4444" -DtargetOperatingSystem="Linux-64" -DmaximumPerformanceMode="2" -DtargetBrowserName="GoogleChrome" -DgenerateAllureReportArchive="true" -Dtest="!%regex[.*Test_MobileEmulation.*], !%regex[.*Test_Healenium.*], !%regex[.*selfRelease.*], !%regex[.*BuildAndRelease.*], !%regex[.*checksum.*], !%regex[.*cucumber.*], !%regex[.*sikulix.*], !%regex[.*imageComparison.*], !%regex[.*FileActions.*], !%regex[.*TerminalActions.*], !%regex[.*localShell.*], !%regex[.*fullPageScreenshotWithHeader.*], !%regex[.*dbConnection.*], !%regex[.*Appium.*], !%regex[.*Android.*], !%regex[.*IOS.*], !%regex[.*Windows.*]"
           elif [ "$RUNNER_OS" == "macOS" ]; then
@@ -50,7 +50,7 @@ jobs:
         if: runner.os == 'Windows'
         continue-on-error: true
         run: |
-          cd GUI_Web/
+          cd MV_WebApp_New_Syntax/
           mvn test -DexecutionAddress="local" -DtargetOperatingSystem="Windows-64" -DmaximumPerformanceMode="2" -DtargetBrowserName="MicrosoftEdge" -DgenerateAllureReportArchive="true" -Dtest="!%regex[.*Test_MobileEmulation.*], !%regex[.*Test_Healenium.*], !%regex[.*selfRelease.*], !%regex[.*BuildAndRelease.*], !%regex[.*checksum.*], !%regex[.*cucumber.*], !%regex[.*sikulix.*], !%regex[.*imageComparison.*], !%regex[.*FileActions.*], !%regex[.*TerminalActions.*], !%regex[.*localShell.*], !%regex[.*fullPageScreenshotWithHeader.*], !%regex[.*dbConnection.*], !%regex[.*Appium.*], !%regex[.*Android.*], !%regex[.*IOS.*], !%regex[.*Windows.*]"
 
       - name: Upload Allure Report as Pipeline Artifact    # melsayed: Step 8 -> Uploading generated allure reports 
@@ -58,11 +58,11 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ runner.os }} - Desktop Browsers Tests Allure Report
-          path: "GUI_Web/generatedReport_*.zip"
+          path: "MV_WebApp_New_Syntax/generatedReport_*.zip"
 
       - name: Upload Extent Report as Pipeline Artifact    # melsayed: Step 9 -> Uploading generated extent reports 
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: ${{ runner.os }} - Desktop Browsers Tests Extent Report
-          path: "GUI_Web/extent-reports/ExtentReports_*.html"
+          path: "MV_WebApp_New_Syntax/extent-reports/ExtentReports_*.html"
