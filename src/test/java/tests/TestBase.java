@@ -50,8 +50,8 @@ public class TestBase {
 	
 	//@BeforeTest //--> when running more than one test class (from testng.xml), only the first test runs
 	//@BeforeSuite //--> when running more than one test class (from testng.xml), only the first test runs
-	//@BeforeMethod
-	@BeforeClass
+	@BeforeMethod
+	//@BeforeClass
 	public void startDriverAndNavigateToURL() {	
 		 driver			= new SHAFT.GUI.WebDriver();												//Instantiating shaft's web driver -> Can be used in all Tests (since all tests inherits from this test base class)
 		 excelSystems	= new ExcelFileDataReader(excelPath_SystemsAndUsers, sheetName_Systems);	//Excel object for reading Systems/URLs (instantiation) -> Can be used in all Tests (since all tests inherits from this test base class)
