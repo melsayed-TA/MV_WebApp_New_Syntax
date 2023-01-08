@@ -24,7 +24,7 @@ jobs:
           node-version: '16'
       - name: Set up Native Selenium Grid     # melsayed: Step 3 -> Set up a selenium grid over a docker compose (in case of running tests on Linux)
         if: runner.os == 'Linux'
-        run: docker-compose -f MV_WebApp_New_Syntax/src/test/resources/docker-compose/selenium4.yml up --scale chrome=4 --scale edge=0 --scale firefox=0 -d
+        run: docker-compose -f MV_WebApp_New_Syntax\src\test\resources\docker-compose\selenium4.yml up --scale chrome=4 --scale edge=0 --scale firefox=0 -d
       - name: Set up JDK 17                   # melsayed: Step 4 -> Set up the JDK
         uses: actions/setup-java@v3
         with:
