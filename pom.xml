@@ -11,7 +11,7 @@
 
 	<properties>
 		<!-- Make sure you point to the latest release version: https://github.com/ShaftHQ/SHAFT_ENGINE/releases -->
-		<shaft_engine.version>6.4.20221225</shaft_engine.version>
+		<shaft_engine.version>7.1.20230104</shaft_engine.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -31,7 +31,6 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.codoid.products/fillo -->
-		<!-- Added by melsayed, to run a full testsuite from the testng.xml/any.xml file-->
 		<dependency>
 			<groupId>com.codoid.products</groupId>
 			<artifactId>fillo</artifactId>
