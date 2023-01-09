@@ -12,6 +12,7 @@
     <properties>
         <!-- Make sure you point to the latest release version: https://github.com/ShaftHQ/SHAFT_ENGINE/releases -->
         <shaft_engine.version>7.1.20230104</shaft_engine.version>
+		<suiteXmlFile>testng.xml</suiteXmlFile>				<!-- Added by melsayed, to run a full testsuite from the testng.xml file. Note that this can always be overridden in the cmd or CI/CD platform. Ex: mvn clean test -DsuiteXMLFile=RegressionSuite.xml-->
     </properties>
     <repositories>
         <repository>
