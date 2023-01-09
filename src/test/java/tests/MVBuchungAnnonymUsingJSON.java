@@ -20,8 +20,8 @@ public class MVBuchungAnnonymUsingJSON extends TestBase{
 		public static Object[][] getTestData() throws JsonIOException, JsonSyntaxException, FileNotFoundException
 		{
 			//String JSONPath = System.getProperty("user.dir") + "\\src\\test\\resources\\testDataFiles\\simpleJSON.json";
-			String JSONPath = "\\src\\test\\resources\\testDataFiles\\simpleJSON.json";
-
+			String JSONPath = "./src\\test\\resources\\testDataFiles\\simpleJSON.json";
+			
 			Object [][] jsonData = JSONFileDataReader.getdata(JSONPath, "MV_Testdaten", 2 , 3);   //1st 2 is the number of rows and 2nd 2 is the number of columns. ToDo: Get no. of rows and columns
 			return jsonData;				
 		}
