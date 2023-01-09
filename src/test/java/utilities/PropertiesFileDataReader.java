@@ -9,7 +9,9 @@ public class PropertiesFileDataReader {
 
 	//Read the test data from the properties file
 	
-	public static Properties userData = GetPropertiesFile(System.getProperty("user.dir") + "\\src\\test\\resources\\testDataFiles\\userdata.properties");
+	//public static Properties userData = GetPropertiesFile(System.getProperty("user.dir") + "\\src\\test\\resources\\testDataFiles\\userdata.properties");
+	public static Properties userData = GetPropertiesFile("\\src\\test\\resources\\testDataFiles\\userdata.properties");
+
 	
 	//Method to read data from properties file
 	private static Properties GetPropertiesFile(String path) {
