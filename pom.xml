@@ -83,9 +83,9 @@
                         </property>
                     </properties>
 
-					<suiteXmlFiles>											
-						<suiteXmlFile>${suiteXMLFile}</suiteXmlFile>	<!-- Added by melsayed, to run a full testsuite from the testng.xml file-->		
-					</suiteXmlFiles>
+					<!-- <suiteXmlFiles>-->											
+					<!--	<suiteXmlFile>${suiteXMLFile}</suiteXmlFile>-->	<!-- Added by melsayed, to run a full testsuite from the testng.xml file-->		
+					<!--</suiteXmlFiles>-->	
 
                 </configuration>
             </plugin>
