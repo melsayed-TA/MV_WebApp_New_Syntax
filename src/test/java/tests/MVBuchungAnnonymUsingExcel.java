@@ -19,7 +19,7 @@ public class MVBuchungAnnonymUsingExcel extends TestBase {
 	public static String[][] getTestData() throws IOException
 	{
 		//String excelFilePath	= System.getProperty("user.dir") + "\\src\\test\\resources\\testDataFiles\\MV_TestData.xlsx";
-		String excelFilePath	= "\\src\\test\\resources\\testDataFiles\\MV_TestData.xlsx";
+		String excelFilePath	= "MV_WebApp_New_Syntax\\src\\test\\resources\\testDataFiles\\MV_TestData.xlsx";
 		String sheetName		= "MV_Testdaten_Iterations";
 		ExcelFileDataReader objExcel = new ExcelFileDataReader(excelFilePath, sheetName);
 		String[][] excelData = objExcel.getExcelData();
