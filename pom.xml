@@ -35,7 +35,7 @@
 		<dependency>
 			<groupId>com.codoid.products</groupId>
 			<artifactId>fillo</artifactId>
-			<version>1.21</version>
+			<version>1.22</version>
 		</dependency>
     </dependencies>
     <build>
