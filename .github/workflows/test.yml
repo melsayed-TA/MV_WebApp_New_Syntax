@@ -42,7 +42,7 @@ jobs:
           if [ "$RUNNER_OS" == "Linux" ]; then
                mvn test -DsuiteXmlFile=testng.xml
           elif [ "$RUNNER_OS" == "macOS" ]; then
-               mvn test -DsuiteXmlFile=testng.xml 
+               mvn test -DsuiteXmlFile=testng.xml
           else
                echo "$RUNNER_OS not supported"
                exit 1
@@ -50,7 +50,7 @@ jobs:
       - name: Run tests on Windows
         if: runner.os == 'Windows'
         continue-on-error: true
-        run: mvn test -DsuiteXmlFile=testng.xml 
+        run: mvn test -DsuiteXmlFile="estng.xml
 
       - name: Upload Allure Report as Pipeline Artifact
         if: always()
