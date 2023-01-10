@@ -9,7 +9,7 @@
 	<artifactId>MV_WebApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-    <properties>
+        <properties>
         <!-- Make sure you point to the latest release version: https://github.com/ShaftHQ/SHAFT_ENGINE/releases -->
         <shaft_engine.version>7.1.20230104</shaft_engine.version>
     </properties>
@@ -29,12 +29,12 @@
             <artifactId>SHAFT_ENGINE</artifactId>
             <version>${shaft_engine.version}</version>
         </dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/com.codoid.products/fillo -->
 		<dependency>
-			<groupId>com.codoid.products</groupId>
-			<artifactId>fillo</artifactId>
-			<version>1.21</version>
+		    <groupId>com.codoid.products</groupId>
+		    <artifactId>fillo</artifactId>
+		    <version>1.22</version>
 		</dependency>
     </dependencies>
     <build>
@@ -82,14 +82,8 @@
                             </value>
                         </property>
                     </properties>
-
-					<!-- <suiteXmlFiles>-->											
-					<!--	<suiteXmlFile>${suiteXMLFile}</suiteXmlFile>-->	<!-- Added by melsayed, to run a full testsuite from the testng.xml file-->		
-					<!--</suiteXmlFiles>-->	
-
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

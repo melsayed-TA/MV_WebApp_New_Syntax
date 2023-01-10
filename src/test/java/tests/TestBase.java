@@ -62,19 +62,10 @@ public class TestBase {
 	
 	
 	//Quit Driver
-	@AfterTest(enabled = true) 
+	@AfterMethod(enabled = true) 
 	public void stopDriver() {
 		driver.quit();
 	}
 	
-	
-	//To be executed after 'EACH' method --> take a screenshot when a test case fails and save it in the Screenshots folder
-	@AfterMethod
-	public void screenshotOnFailure(ITestResult result) {
-		if (result.getStatus() == ITestResult.FAILURE) {
-			System.out.println("Testcase failed!");
-			Helper.captureScreenshot(driver, result.getName());
-			System.out.println("Screenshot took and saved in Screenshots folder.");
-		}
-	}
+
 }
