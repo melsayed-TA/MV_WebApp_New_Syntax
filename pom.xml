@@ -82,7 +82,10 @@
                             </value>
                         </property>
                     </properties>
-                </configuration>
+					<suiteXmlFiles>											
+						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>		<!-- Added to run a full testsuite from the testng.xml file-->		
+					</suiteXmlFiles>	
+                </configuration>			
             </plugin>
         </plugins>
     </build>
