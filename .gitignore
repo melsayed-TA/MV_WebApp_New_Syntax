@@ -41,3 +41,4 @@ buildNumber.properties
 /*/allure-results/
 /*/extent-reports/
 /.idea/
+.metadata/.plugins/org.eclipse.pde.core/.cache/clean-cache.properties
