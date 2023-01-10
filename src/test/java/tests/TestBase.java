@@ -22,9 +22,7 @@ public class TestBase {
 	
 	private String umgebung 					= PropertiesFileDataReader.userData.getProperty("umgebung");	//Read Umgebung from properties file (Best way to store it!). Ex: EK1
 	
-	//private String excelPath_SystemsAndUsers	= System.getProperty("user.dir") + "\\src\\test\\resources\\testDataFiles\\SystemsAndUsers.xlsx";
-	private String excelPath_SystemsAndUsers	= "MV_WebApp_New_Syntax\\src\\test\\resources\\testDataFiles\\SystemsAndUsers.xlsx";
-	
+	private String excelPath_SystemsAndUsers	= System.getProperty("user.dir") + "\\src\\test\\resources\\testDataFiles\\SystemsAndUsers.xlsx";
 	private String sheetName_Systems			= "Systems_" + umgebung;	//Systems_EK1
 	private ExcelFileDataReader excelSystems;
 		
@@ -33,9 +31,7 @@ public class TestBase {
 	private String sheetName_Users				= "MV_Users_" + umgebung; 
 	private ExcelFileDataReader excelUsers;				
 	
-	//private String excelPath_Testdaten 			= System.getProperty("user.dir") + "\\src\\test\\resources\\testDataFiles\\MV_TestData_Different_Tests.xlsx";
-	private String excelPath_Testdaten 			= "MV_WebApp_New_Syntax\\src\\test\\resources\\testDataFiles\\MV_TestData_Different_Tests.xlsx";
-	
+	private String excelPath_Testdaten 			= System.getProperty("user.dir") + "\\src\\test\\resources\\testDataFiles\\MV_TestData_Different_Tests.xlsx";
 	private String sheetName_Testdaten			= "MV_Testdaten"; 														
 	private ExcelFileDataReader excelTestDaten;			
 	
