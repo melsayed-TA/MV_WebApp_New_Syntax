@@ -11,7 +11,7 @@ import utilities.ExcelFileDataReader;
 
 
 public class MVBuchungAnnonymUsingExcel extends TestBase {
-	private int counter = 1;
+	private int counter;
 	
 	//Get test data using the excel reader class --> (ReadExcelFileData) 
 	//Data driven testing with Excel and TestNG annotation "@DataProvider"
@@ -30,7 +30,7 @@ public class MVBuchungAnnonymUsingExcel extends TestBase {
 	@Description("Given that the environment is ready to be tested, When I try to book a ride using the MV-WebApp, Then a booking number will be displayed.")
 	@Test(dataProvider = "MVTestData", description = "Prüfen, ob Einbuchung in der MV-WebApp funktioniert und Auslesen der Buchungsnummer")
 	public void durchfuehrenMVEinbuchung(String buchungssprache, String zulassungsland, String kennzeichen, String schadstoffklasse_title_soll) {
-					
+		counter = 1;			
 		ReportManager.log("**************MV-Einbuchung: " + counter + " wird durchgeführt**************");
 		
 		// 1. Navigation
