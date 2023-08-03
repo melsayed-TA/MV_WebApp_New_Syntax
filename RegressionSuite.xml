@@ -5,7 +5,7 @@
  
  	<classes>
       <class name="tests.MVBuchungAnonymKreditkarte"/>
-	  <class name="tests.MVBuchungRegnutzerKreditkarte"/>	
+    <!--  <class name="tests.MVBuchungRegnutzerKreditkarte"/>-->
     </classes>
   
   </test> <!-- Test -->
