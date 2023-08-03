@@ -9,7 +9,6 @@ import pages.A_HomePage;
 import pages.E_SchadstoffklassePage;
 import utilities.ExcelFileDataReader;
 
-
 public class MVBuchungAnnonymUsingExcel extends TestBase {
 	private int counter;
 	

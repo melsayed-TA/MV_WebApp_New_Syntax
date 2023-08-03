@@ -29,16 +29,16 @@ public class A_HomePage extends PageBase{
 	}
 	
 	
-	public String ermittleWillkommenNachricht() {
+	/*public String ermittleWillkommenNachricht() {
 		String willkommenNachtichtIst = driver.element().getText(willkommenNachticht);	
 		return willkommenNachtichtIst;
-	}
+	}*/
 	
 	
-	public boolean pruefeExistenzStreckeEinbuchenButton() {
+	/*public boolean pruefeExistenzStreckeEinbuchenButton() {
 		boolean isStreckeEinbuchenAngezeigt = driver.getDriver().findElement(streckeEinbuchenButton).isDisplayed();		//NATIVE SELENIUM (Bec. isDisplayed() method is missed). Note that driver.getDriver() returns the native selenium driver, which you can use to perform any native selenium action)
 		return isStreckeEinbuchenAngezeigt;
-	}
+	}*/
 	
 	
 	public A_HomePage waehleBuchungspracheAus(String sprache) {
@@ -68,8 +68,8 @@ public class A_HomePage extends PageBase{
 	public B_FahrtbeginnPage klickeStarteEinbuchungUndNavigiereZurFahrbeginnSeite() {
 		driver.element().click(streckeEinbuchenButton);
 		
-		B_FahrtbeginnPage fahrtbeginnPage = new B_FahrtbeginnPage(driver);
-		return fahrtbeginnPage;	 //return the next page (Fahrtbeginn) --> Fluent design
+		/*B_FahrtbeginnPage fahrtbeginnPage = new B_FahrtbeginnPage(driver);*/
+		return new B_FahrtbeginnPage(driver);	 //return the next page (Fahrtbeginn) --> Fluent design
 	}
 }
 

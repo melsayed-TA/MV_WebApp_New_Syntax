@@ -8,6 +8,7 @@ public class B_FahrtbeginnPage extends PageBase{
 		
 	//Constructor
 	public B_FahrtbeginnPage(SHAFT.GUI.WebDriver driver) {
+
 		super(driver);
 	}
 

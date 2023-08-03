@@ -10,7 +10,7 @@ public class MVBuchungRegnutzerKreditkarte extends TestBase {
 	String testcaseId = "Regnutzer_Kreditkarte";
 
 	//Test Case
-	@Description("Dieser Test prüft, ob eine MV-Buchung mit einem reg. Nutzer und einer KK durchgeführt werden kann. Die Testdaten werden aus einer Exceldatei ausgelesen.")
+	@Description("Dieser Test prüft, ob eine MV-Buchung mit einem reg. Nutzer und einer KK durchgeführt werden kann. Die Testdaten werden aus einer Exceldatei ausgelesen (Using TestIds).")
 	@Test(description = "Prüfen, ob Einbuchung mit Regnutzer in der MV-WebApp funktioniert und Auslesen der Buchungsnummer")
 	public void durchfuehrenMVEinbuchung_Regnutzer_KK() {	
 		

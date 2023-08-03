@@ -21,7 +21,6 @@ public class TestBase {
 	protected static SHAFT.GUI.WebDriver driver;
 	
 	private String umgebung 					= PropertiesFileDataReader.userData.getProperty("umgebung");	//Read Umgebung from properties file (Best way to store it!). Ex: EK1
-	
 	private String excelPath_SystemsAndUsers	= System.getProperty("user.dir") + "\\src\\test\\resources\\testDataFiles\\SystemsAndUsers.xlsx";
 	private String sheetName_Systems			= "Systems_" + umgebung;	//Systems_EK1
 	private ExcelFileDataReader excelSystems;
@@ -57,10 +56,9 @@ public class TestBase {
 		 excelSystems	= new ExcelFileDataReader(excelPath_SystemsAndUsers, sheetName_Systems);	//Excel object for reading Systems/URLs (instantiation) -> Can be used in all Tests (since all tests inherits from this test base class)
 		 excelUsers		= new ExcelFileDataReader(excelPath_SystemsAndUsers, sheetName_Users);		//Excel object for reading Users (instantiation) -> Can be used in all Tests (since all tests inherits from this test base class)
 		 excelTestDaten = new ExcelFileDataReader(excelPath_Testdaten, sheetName_Testdaten);		//Excel object for reading test data (instantiation) -> Can be used in all Tests (since all tests inherits from this test base class)
-		 url			= excelSystems.getCellDataByKey("Systemart", "MV" , "URL");					//Get URL from excel -> Can be used in all Tests (since all tests inherits from this test base class) 
+		 url			= excelSystems.getCellDataByKey("Systemart", "MV" , "URL");	//Get URL from excel -> Can be used in all Tests (since all tests inherits from this test base class)
 	}
-	
-	
+
 	//Quit Driver
 	@AfterMethod(enabled = true) 
 	public void stopDriver() {
