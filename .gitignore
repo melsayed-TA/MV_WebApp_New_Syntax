@@ -42,3 +42,7 @@ buildNumber.properties
 /*/extent-reports/
 /.idea/
 .metadata/.plugins/org.eclipse.pde.core/.cache/clean-cache.properties
+src/test/resources/META-INF/services/org.testng.ITestNGListener
+*.mp4
+*.avi
+*.html
