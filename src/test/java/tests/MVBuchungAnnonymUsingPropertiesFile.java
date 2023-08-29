@@ -31,16 +31,15 @@ public class MVBuchungAnnonymUsingPropertiesFile extends TestBase {
 			System.out.println("Data from data provider, kennzeichen: " + kennzeichen);
 		
 			//Test Case
-			//A_HomePage homeSeite = new A_HomePage(driver);
 			new A_HomePage(driver).navigateToMVWebApp(getUrl())
-								  .waehleBuchungspracheAus(arrBuchungssprache[i])
-								  .klickeStarteEinbuchungUndNavigiereZurFahrbeginnSeite()
-								  .klickeWeiterInDerFahrtbeginnSeite().getZulassungsPage()
-								  .waehleZulassungslandAus(arrZulassungsland[i])
-								  .klickeWeiterUndNavigiereZurKennzeichenSeite()
-								  .gebeKennzeichenFeldEin(arrkennzeichen[i])
-								  .klickeWeiterUndNavigiereZurSchadstoffklasseSeite()
-								  .assertVierEuroButtonExistiert();
+								  .waehleBuchungsprache(arrBuchungssprache[i])
+								  .klickeStreckeEinbuchen()
+								  .klickeWeiter().getZulassungsPage()
+								  .waehleZulassungsland(arrZulassungsland[i])
+								  .klickeWeiter()
+								  .gebeKennzeichenEin(arrkennzeichen[i])
+								  .klickeWeiter()
+								  .pruefeVierEuroButtonExistiert();
 		}
 		
 	}

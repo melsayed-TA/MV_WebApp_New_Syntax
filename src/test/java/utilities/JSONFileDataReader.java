@@ -1,5 +1,6 @@
 package utilities;
 
+import java.io.File;
 import java.util.Map;
 
 import java.io.FileNotFoundException;
@@ -7,6 +8,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -90,7 +93,19 @@ public class JSONFileDataReader {
         }
         return matrix;
 	}
-	
+
+	public static JsonNode loadJsonFromFile(String filePath) throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		return objectMapper.readTree(new File(filePath));
+	}
+
+	public static int getNumColumns(JsonNode jsonData) {
+		if (jsonData.isArray() && jsonData.size() > 0) {
+			JsonNode firstObject = jsonData.get(0);
+			return firstObject.size();
+		}
+		return 0;
+	}
 	
 }
 	

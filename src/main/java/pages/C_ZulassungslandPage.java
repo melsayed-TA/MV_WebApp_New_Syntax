@@ -16,7 +16,7 @@ public class C_ZulassungslandPage extends PageBase{
 	private By weiterButton 	 = By.id("btn-forward");
 	
 	//Actions
-	public C_ZulassungslandPage waehleZulassungslandAus(String zulassungsland) {
+	public C_ZulassungslandPage waehleZulassungsland(String zulassungsland) {
 		
 		if (zulassungsland.toUpperCase().contains("DE")) {
 			driver.element().click(deutschlandButton);
@@ -30,7 +30,7 @@ public class C_ZulassungslandPage extends PageBase{
 		return this; //returning the same object! --> Fluent design
 	}
 	
-	public D_KennzeichenPage klickeWeiterUndNavigiereZurKennzeichenSeite() {
+	public D_KennzeichenPage klickeWeiter() {
 		driver.element().click(weiterButton);
 		
 		D_KennzeichenPage kennzeichenPage = new D_KennzeichenPage(driver);

@@ -15,12 +15,12 @@ public class D_KennzeichenPage extends PageBase{
 	private By weiterButton = By.id("btn-forward");
 	
 	//Actions
-	public D_KennzeichenPage gebeKennzeichenFeldEin(String kennzeichen) {
+	public D_KennzeichenPage gebeKennzeichenEin(String kennzeichen) {
 		driver.element().type(kennzeichenFeld, kennzeichen);
 		return this;
 	}
 	
-	public E_SchadstoffklassePage klickeWeiterUndNavigiereZurSchadstoffklasseSeite() {
+	public E_SchadstoffklassePage klickeWeiter() {
 		driver.element().click(weiterButton);
 		
 		E_SchadstoffklassePage schadstoffklassePage = new E_SchadstoffklassePage(driver);

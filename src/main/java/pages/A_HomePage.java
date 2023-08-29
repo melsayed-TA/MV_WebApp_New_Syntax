@@ -28,20 +28,18 @@ public class A_HomePage extends PageBase{
 		return this;
 	}
 	
-	
-	/*public String ermittleWillkommenNachricht() {
+	public String ermittleWillkommenNachricht() {
 		String willkommenNachtichtIst = driver.element().getText(willkommenNachticht);	
 		return willkommenNachtichtIst;
-	}*/
+	}
 	
 	
-	/*public boolean pruefeExistenzStreckeEinbuchenButton() {
+	public boolean pruefeExistenzStreckeEinbuchenButton() {
 		boolean isStreckeEinbuchenAngezeigt = driver.getDriver().findElement(streckeEinbuchenButton).isDisplayed();		//NATIVE SELENIUM (Bec. isDisplayed() method is missed). Note that driver.getDriver() returns the native selenium driver, which you can use to perform any native selenium action)
 		return isStreckeEinbuchenAngezeigt;
-	}*/
-	
-	
-	public A_HomePage waehleBuchungspracheAus(String sprache) {
+	}
+
+	public A_HomePage waehleBuchungsprache(String sprache) {
 		
 		if (sprache.toUpperCase().contains("DEUTSCH") == true) {
 			driver.element().click(deutschSpracheButton);
@@ -53,7 +51,7 @@ public class A_HomePage extends PageBase{
 		
 		return this;
 	}
-	
+
 	
 	public A_HomePage loginMitUser(String username, String password) {
 		driver.element().click(loginButton);
@@ -63,9 +61,8 @@ public class A_HomePage extends PageBase{
 		
 		return this;
 	}
-	
-	
-	public B_FahrtbeginnPage klickeStarteEinbuchungUndNavigiereZurFahrbeginnSeite() {
+
+	public B_FahrtbeginnPage klickeStreckeEinbuchen() {
 		driver.element().click(streckeEinbuchenButton);
 		
 		/*B_FahrtbeginnPage fahrtbeginnPage = new B_FahrtbeginnPage(driver);*/

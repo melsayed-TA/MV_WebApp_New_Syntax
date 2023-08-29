@@ -24,13 +24,13 @@ public class MVBuchungAnonymKreditkarte extends TestBase{
 		//Fluent design!
 		//A_HomePage homeSeite = new A_HomePage(driver);
 		E_SchadstoffklassePage sskPage	= new A_HomePage(driver).navigateToMVWebApp(getUrl())
-							  .waehleBuchungspracheAus(buchungssprache)
-							  .klickeStarteEinbuchungUndNavigiereZurFahrbeginnSeite()
-							  .klickeWeiterInDerFahrtbeginnSeite().getZulassungsPage()
-							  .waehleZulassungslandAus(zulassungsland)
-							  .klickeWeiterUndNavigiereZurKennzeichenSeite()
-							  .gebeKennzeichenFeldEin(kennzeichen)
-							  .klickeWeiterUndNavigiereZurSchadstoffklasseSeite();
+							  .waehleBuchungsprache(buchungssprache)
+							  .klickeStreckeEinbuchen()
+							  .klickeWeiter().getZulassungsPage()
+							  .waehleZulassungsland(zulassungsland)
+							  .klickeWeiter()
+							  .gebeKennzeichenEin(kennzeichen)
+							  .klickeWeiter();
 							  //.assertVierEuroButtonExistiert();
 		
 		driver.assertThat().element(sskPage.getEuroVierButton()).exists().withCustomReportMessage("Check if Euro 4 Button Exists").perform(); //Assertion

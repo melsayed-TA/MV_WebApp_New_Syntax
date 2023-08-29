@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 import com.shaft.driver.SHAFT;
 
-
 public class B_FahrtbeginnPage extends PageBase{
 		
 	//Constructor
@@ -16,7 +15,7 @@ public class B_FahrtbeginnPage extends PageBase{
 	private By weiterButton = By.id("btn-forward");
 	
 	//Actions
-	public /*C_ZulassungslandPage*/ Z_SeiteDrei klickeWeiterInDerFahrtbeginnSeite() {
+	public /*C_ZulassungslandPage*/ Z_SeiteDrei klickeWeiter() {
 		driver.element().click(weiterButton);
 		
 		Z_SeiteDrei seiteDrei = new Z_SeiteDrei(driver);

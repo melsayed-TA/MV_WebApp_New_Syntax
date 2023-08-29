@@ -10,32 +10,32 @@ public class MVBuchungRegnutzerKreditkarte extends TestBase {
 	String testcaseId = "Regnutzer_Kreditkarte";
 
 	//Test Case
-	@Description("Dieser Test prüft, ob eine MV-Buchung mit einem reg. Nutzer und einer KK durchgeführt werden kann. Die Testdaten werden aus einer Exceldatei ausgelesen (Using TestIds).")
+	@Description("Dieser Test prüft, ob eine MV-Buchung mit einem reg. Nutzer und einer KK durchgeführt werden kann. \nDie Testdaten werden aus einer Exceldatei ausgelesen (Using TestIds).")
 	@Test(description = "Prüfen, ob Einbuchung mit Regnutzer in der MV-WebApp funktioniert und Auslesen der Buchungsnummer")
-	public void durchfuehrenMVEinbuchung_Regnutzer_KK() {	
+	public void durchfuehrenMVEinbuchung_mit_Regnutzer_KK() {
 		
-		//Read Test Data from excel file
-		String rolle 					= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Rolle");				//Read Rolle from test data excel by key/testcaseId
-		String buchungssprache			= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Buchungssprache");	//Read Buchungssprache from test data excel by key/testcaseId
-		String zulassungsland			= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Zulassungsland");	//Read Zulassungsland from test data excel by key/testcaseId
-		String kennzeichen				= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Kennzeichen");		//Read Kennzeichen from test data excel by key/testcaseId 
+		//Read Test Data from excel file (Can be read using shaft's excelTestData object!)
+		String rolle 			= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Rolle");				//Read Rolle from test data excel by key/testcaseId
+		String buchungssprache	= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Buchungssprache");	//Read Buchungssprache from test data excel by key/testcaseId
+		String zulassungsland	= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Zulassungsland");	//Read Zulassungsland from test data excel by key/testcaseId
+		String kennzeichen		= getExcelTestDaten().getCellDataByTestcaseId(testcaseId, "Kennzeichen");		//Read Kennzeichen from test data excel by key/testcaseId
 
 		//Get user using Umgebung + Rolle (Using sheet name --> sheet name is the controller) // URL --> Get Name (SystemName/URL) using the excel method, using the UmgebungName + Type (ID/Key) (Sheet name is the controller.)
-		String username				   	= getExcelUsers().getCellDataByKey("Rolle", rolle, "Username");					//Read user name from SystemsAndUsers excel!!
-		String password 				= getExcelUsers().getCellDataByKey("Rolle", rolle, "Password");					//Read password from SystemsAndUsers excel!!
+		String username			= getExcelUsers().getCellDataByKey("Rolle", rolle, "Username");					//Read user name from SystemsAndUsers excel!!
+		String password 		= getExcelUsers().getCellDataByKey("Rolle", rolle, "Password");					//Read password from SystemsAndUsers excel!!
 		
 		//1. Navigation
 		//A_HomePage homeSeite			= new A_HomePage(driver);
 		E_SchadstoffklassePage sskPage	= new A_HomePage(driver).navigateToMVWebApp(getUrl())
-																.waehleBuchungspracheAus(buchungssprache)
+																.waehleBuchungsprache(buchungssprache)
 																.loginMitUser(username, password)
-																.klickeStarteEinbuchungUndNavigiereZurFahrbeginnSeite()
-																.klickeWeiterInDerFahrtbeginnSeite().getFahrzeugePage()				//Using the Z_SeiteDrei object which returns 2 pages, I then decide which page to access depending on the scenario i am testing!
+																.klickeStreckeEinbuchen()
+																.klickeWeiter().getFahrzeugePage()				//Using the Z_SeiteDrei object which returns 2 pages, I then decide which page to access depending on the scenario i am testing!
 																.klickeAnderesFahrzeugVerwendenUndNavigiereZurZulassungslandPage()			 
-																.waehleZulassungslandAus(zulassungsland)
-																.klickeWeiterUndNavigiereZurKennzeichenSeite()
-																.gebeKennzeichenFeldEin(kennzeichen)
-																.klickeWeiterUndNavigiereZurSchadstoffklasseSeite();
+																.waehleZulassungsland(zulassungsland)
+																.klickeWeiter()
+																.gebeKennzeichenEin(kennzeichen)
+																.klickeWeiter();
 		
 		//2. Assertion -> Check page title
 		//Assert.assertEquals(titleNameActual, titleNameExpected, "Title of Schadstoffklasse page is not as expected!");	//TestNG Framework Assertion

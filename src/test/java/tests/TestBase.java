@@ -19,6 +19,7 @@ public class TestBase {
 	//private String url	= PropertiesFileDataReader.userData.getProperty("url");	//Read the URL from the properties file
 
 	protected static SHAFT.GUI.WebDriver driver;
+	private SHAFT.TestData.EXCEL excelTestData;
 	
 	private String umgebung 					= PropertiesFileDataReader.userData.getProperty("umgebung");	//Read Umgebung from properties file (Best way to store it!). Ex: EK1
 	private String excelPath_SystemsAndUsers	= System.getProperty("user.dir") + "\\src\\test\\resources\\testDataFiles\\SystemsAndUsers.xlsx";

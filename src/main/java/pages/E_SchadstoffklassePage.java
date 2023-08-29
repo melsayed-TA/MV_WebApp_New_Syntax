@@ -31,7 +31,7 @@ public class E_SchadstoffklassePage extends PageBase{
 		driver.element().click(jaButton);
 	}
 	
-	public E_SchadstoffklassePage assertVierEuroButtonExistiert() {
+	public E_SchadstoffklassePage pruefeVierEuroButtonExistiert() {
 		driver.assertThat().element(euroVierButton).exists().withCustomReportMessage("Check that the 'Euro 4' Button exists in the Schadstoffklasse page.").perform();	
 		return this;
 	}
