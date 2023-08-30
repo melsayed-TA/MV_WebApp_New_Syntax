@@ -5,6 +5,7 @@
 
 		<classes>
 			<class name="tests.MVBuchungRegnutzerKreditkarte" />
+			<class name="tests.MVBuchungAnonymKreditkarte"/>
 		</classes>
 
 	</test> <!-- Test -->
